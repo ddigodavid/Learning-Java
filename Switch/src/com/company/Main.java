@@ -21,5 +21,24 @@ public class Main {
                 System.out.println("Value was not 1, 2, 3, 4 or 5");
                 break;
         }
+
+        char character = 'E';
+
+	    switch (character) {
+            case 'A':
+                System.out.println("The character was A");
+                break;
+            case 'B':
+                System.out.println("The character was B");
+                break;
+            case 'C':
+            case 'D':
+            case 'E':
+                System.out.println("The character was " + character);
+                break;
+            default:
+                System.out.println("Invalid character entered");
+                break;
+        }
     }
 }
