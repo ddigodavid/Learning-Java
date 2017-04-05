@@ -11,6 +11,19 @@ public class Main {
         // the object e.g. not using a getter
         // but to access the object used in composition within the main class.
 
+        Door door = new Door(50, 230);
+        Window window = new Window(60, 40);
+        Bed bed = new Bed(100, 240, "King size");
+        LightFixture lightFixture = new LightFixture(4, 100);
+        Wardrobe wardrobe = new Wardrobe(240, 300);
 
+        Room room = new Room(door, window, bed, lightFixture, wardrobe);
+
+        House house = new House(room);
+
+        house.getRoom().pressLightSwitcher();
+        house.getRoom().getBed().makeBed();
+        house.getRoom().getWardrobe().organizeWardrobe();
+        house.getRoom().pressLightSwitcher();
     }
 }
