@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ForLoop-Challenge_PrimaryNumber.iml" filepath="$PROJECT_DIR$/ForLoop-Challenge_PrimaryNumber.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ForLoop-Challenge_PrimeNumber.iml" filepath="$PROJECT_DIR$/ForLoop-Challenge_PrimeNumber.iml" />
     </modules>
   </component>
 </project>

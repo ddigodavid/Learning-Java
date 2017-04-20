@@ -13,14 +13,14 @@ public class Main {
         // Decide on the scope, whether to use constructors, and anything else you think is needed.
 
         Printer printer = new Printer(8, false);
-        Printer duplexPrinter = new Printer(3, true);
+        Printer duplexPrinter = new Printer(6, true);
 
         printer.print(3);
         printer.print(2);
         System.out.println("Default printer - Current toner level: " + printer.getTonerLevel());
         System.out.println("----------------------------------------");
 
-        duplexPrinter.print(1);
+        duplexPrinter.print(2);
         duplexPrinter.fillTonerLevel(80);
 
         int remaining = duplexPrinter.fillTonerLevel(30);

@@ -6,7 +6,11 @@ public class Printer {
     private boolean duplex;
 
     public Printer(int tonerLevel, boolean duplex) {
-        this.tonerLevel = tonerLevel;
+        if (tonerLevel >= 1 && tonerLevel <= 100) {
+            this.tonerLevel = tonerLevel;
+        } else {
+            this.tonerLevel = 0;
+        }
         this.duplex = duplex;
         pagesPrinted = 0;
     }
@@ -48,7 +52,7 @@ public class Printer {
         this.pagesPrinted += numberOfPages;
 
         for (int i = 1; i <= numberOfPages; i++) {
-            if (i % 2 == 0 || ! this.isDuplex()) {
+            if (i % 2 != 0 || ! this.isDuplex()) {
                 System.out.println(String.format("Printing page number: %d (Front side)", i));
             } else {
                 System.out.println(String.format("Printing page number: %d (Back side)", i));
