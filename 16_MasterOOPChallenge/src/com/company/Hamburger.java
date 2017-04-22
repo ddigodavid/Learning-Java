@@ -14,94 +14,56 @@ public class Hamburger {
         this.rollType = rollType;
         this.basePrice = basePrice;
 
-        this.tomato = new Tomato(2.5, false, 0);
+        this.tomato = new Tomato(2.5, 0);
+        this.pickles = new Pickles(3.0, 0);
         this.lettuce = new Lettuce(3.0, false);
-        this.pickles = new Pickles(3.0, false, 0);
         this.mayonnaise = new Mayonnaise(5.0, false);
     }
 
-    public Hamburger(
-            String meat,
-            Tomato tomato,
-            String rollType,
-            Lettuce lettuce,
-            Pickles pickles,
-            Mayonnaise mayonnaise
-    ) {
-        this.meat = meat;
-        this.tomato = tomato;
-        this.rollType = rollType;
-        this.lettuce = lettuce;
-        this.pickles = pickles;
-        this.mayonnaise = mayonnaise;
-    }
-
-    public double getPrice() {
-        System.out.println();
-
-        return
-            this.basePrice +
-            this.tomato.getPrice() +
-            this.lettuce.getPrice() +
-            this.pickles.getPrice() +
-            this.mayonnaise.getPrice();
+    public Hamburger addPickles(int units) {
+        this.pickles.add(units);
+        return this;
     }
 
     public Hamburger addTomato(int units) {
-        if (units > 0) {
-            this.tomato.add(units);
-
-            System.out.println(
-                    String.format(
-                            "%d units of tomato added. New quantity of tomatoes in the hamburger: %d",
-                            units, this.tomato.getUnits()
-                    )
-            );
-
-            return this;
-        }
-
-        System.out.println(String.format("Sorry, we can not add %d units of tomatoes.", units));
-        return this;
-    }
-
-    public Hamburger addLettuce() {
-        if (! this.lettuce.wasAdded()) {
-            this.lettuce.added = true;
-            System.out.println("Lettuce was added");
-            return this;
-        }
-
-        System.out.println("Lettuce already added");
-        return this;
-    }
-
-    public Hamburger addPickles(int units) {
-        if (units > 0) {
-            this.pickles.add(units);
-
-            System.out.println(
-                    String.format(
-                            "%d units of pickles added. New quantity of pickles in the hamburger: %d",
-                            units, this.pickles.getUnits()
-                    )
-            );
-
-            return this;
-        }
-
-        System.out.println(String.format("Sorry, we can not add %d units of pickles.", units));
+        this.tomato.add(units);
         return this;
     }
 
     public Hamburger addMayonnaise() {
-        if (! this.mayonnaise.wasAdded()) {
-            this.mayonnaise.added = true;
-            System.out.println("Mayonnaise was added");
-            return this;
+        this.mayonnaise.add();
+        return this;
+    }
+
+    public Hamburger addLettuce() {
+        this.lettuce.add();
+        return this;
+    }
+
+    public double getPrice() {
+        System.out.println(String.format("Hamburger base price: R$%.2f", this.basePrice));
+
+        if (this.lettuce.wasAdded()) {
+            System.out.println(String.format("Lettuce - R$%.2f", this.lettuce.getPrice()));
         }
 
-        System.out.println("Mayonnaise already added");
-        return this;
+        if (this.mayonnaise.wasAdded()) {
+            System.out.println(String.format("Mayonnaise - R$%.2f", this.mayonnaise.getPrice()));
+        }
+
+        if (this.tomato.wasAdded()) {
+            System.out.println(String.format("Tomato x%d - R$%.2f", this.tomato.getUnits(), this.tomato.getPrice()));
+        }
+
+        if (this.pickles.wasAdded()) {
+            System.out.println(String.format("Pickles x%d - R$%.2f", this.pickles.getUnits(), this.pickles.getPrice()));
+        }
+
+        return
+            this.basePrice +
+                this.tomato.getPrice() +
+                this.lettuce.getPrice() +
+                this.pickles.getPrice() +
+                this.mayonnaise.getPrice();
     }
 }

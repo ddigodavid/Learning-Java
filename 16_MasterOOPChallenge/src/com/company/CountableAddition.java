@@ -8,17 +8,34 @@ public class CountableAddition extends Addition {
         this.units = units;
     }
 
-    public void add(int units) {
+    public boolean add(int units) {
         if (units > 0) {
-            this.added = true;
             this.units += units;
+
+            System.out.println(
+                String.format(
+                    "%d unit(s) of %s added. New quantity in hamburger: %d",
+                    units, this.getClass().getSimpleName(), this.getUnits()
+                )
+            );
+
+            return true;
         }
+
+        System.out.println(
+            String.format(
+                "Sorry, we can not add %d units of %s.",
+                units, this.getClass().getSimpleName()
+            )
+        );
+
+        return false;
     }
 
     @Override
     public double getPrice() {
-        if (super.wasAdded()) {
-            return this.units * super.getPrice();
+        if (this.wasAdded()) {
+            return this.units * super.price;
         }
 
         return 0.0;
