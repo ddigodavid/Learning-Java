@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -23,7 +24,6 @@ public class Main {
         printArray(numbers);
 
         System.out.println("\n\nArray sorted: ");
-
         numbers = sortIntegers(numbers);
         printArray(numbers);
     }
