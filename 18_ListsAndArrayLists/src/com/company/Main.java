@@ -7,11 +7,10 @@ public class Main {
     private static GroceryList groceryList = new GroceryList();
 
     public static void main(String[] args) {
-        boolean quit = false;
         int choice = 0;
         printInstructions();
 
-        while (! quit) {
+        while (choice != 6) {
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -36,7 +35,10 @@ public class Main {
                     searchForItem();
                     break;
                 case 6:
-                    quit = true;
+                    System.out.println("Bye!");
+                    break;
+                default:
+                    System.out.println("Invalid choice!!");
                     break;
             }
         }
@@ -59,16 +61,15 @@ public class Main {
     }
 
     private static void modifyItem() {
-        System.out.print("Enter the item number: ");
-        int itemNumber = scanner.nextInt();
-        scanner.nextLine();
+        System.out.print("Enter the current item name: ");
+        String currentItem = scanner.nextLine();
         System.out.print("Enter the replacement item: ");
-        groceryList.modifyGroceryItem(itemNumber - 1, scanner.nextLine());
+        groceryList.modifyGroceryItem(currentItem, scanner.nextLine());
     }
 
     private static void removeItem() {
-        System.out.print("Enter the item number: ");
-        groceryList.removeGroceryItem(scanner.nextInt() - 1);
+        System.out.print("Enter the item name: ");
+        groceryList.removeGroceryItem(scanner.nextLine());
     }
 
     private static void searchForItem() {
