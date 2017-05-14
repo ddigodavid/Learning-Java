@@ -27,7 +27,7 @@ public class Main {
             choice = scanner.nextInt();
             scanner.nextLine();
 
-            switch (choice) {
+              switch (choice) {
                 case 0:
                     printInstructions();
                     break;

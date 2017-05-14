@@ -66,7 +66,7 @@ public class MobilePhoneService {
         Contact contact = searchForContact();
 
         if (mobilePhone.contains(contact)) {
-            removeContactIfChosenTo(contact);
+            removeContactIfAgreed(contact);
         }
     }
 
@@ -91,12 +91,11 @@ public class MobilePhoneService {
         return null;
     }
 
-    private void removeContactIfChosenTo(Contact contact) {
-        int choice;
+    private void removeContactIfAgreed(Contact contact) {
         System.out.printf("\tContact found... Are you sure you want to remove %s?\n", contact.getName());
         System.out.println("\t\t1 - Yes");
         System.out.println("\t\t2 - No");
-        choice = scanner.nextInt();
+        int choice = scanner.nextInt();
         scanner.nextLine();
 
         if (choice == 1) {
